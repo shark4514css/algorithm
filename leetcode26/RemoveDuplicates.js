@@ -1,4 +1,4 @@
-两个指针,一个对整个数组进行遍历，i,另一个在发现有新的不同元素的时候加1.
+// 两个指针,一个对整个数组进行遍历，i,另一个在发现有新的不同元素的时候加1.
 var removeDuplicates = function(nums) {
     // 两个边界情况
     if (nums.length === 0) return 0;
