@@ -38,7 +38,7 @@ var rotate3 = function(nums, k) {
     reverse(nums, 0, n);
 };
 
-// 翻转数组从begin到end之间的数
+// 翻转数组从start到end之间的数(不包括end)
 var reverse = function(nums, start, end) {
     let left = start;
     let right = end - 1;
