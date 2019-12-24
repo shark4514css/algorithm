@@ -24,6 +24,9 @@ function LinkedList() {
     
   }
   this.removeAt = function(position) {
+    // 处理越界值
+    if (position > -1 && position < length) {
+    }
     
   }
   this.remove = function(element) { //移除一项
