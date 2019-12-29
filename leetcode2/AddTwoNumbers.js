@@ -13,8 +13,8 @@
  // 将某个变量赋值给指针，实际上就是将这个变量的地址赋值给指针
  // 指针中存储了这个变量的内存地址，指向了这个变量，通过指针就能找到这个变量
 var addTwoNumbers = function(l1, l2) {
-    let p1 = l1; // 将l1赋值给指针，实际上就是将l1的地址赋值给指针
-    let p2 = l2; // 将l2赋值给指针，实际上就是将l2的地址赋值给指针
+    let p1 = l1; // p1 是 listnode
+    let p2 = l2; // p2 是 listnode
     let l0 = new ListNode();
     let pointer = l0; // 将l0赋值给指针pointer,实际上就是将l0的地址赋值给指针；
     let carry = 0;
