@@ -1,0 +1,28 @@
+题目：给定一个链表，判断链表中是否有环。
+解法1： 快慢指针
+var hasCycle = function(head) {
+    if (head === null || head.next === null || head.next.next === null) return false;
+    let fast = head.next;
+    let slow = head;
+    while (fast !=slow && fast != null) {
+        if (fast.next === null || fast.next.next === null) return false;
+        fast = fast.next.next;
+        slow = slow.next;
+    }
+    return fast === slow
+};
+解法2： 哈希表
+var hasCycle = function(head) {
+    if (head === null || head.next === null) return false;
+    let map = new Map();
+    let current = head;
+    while (current) {
+        if (map.get(current)) {
+            return true;
+        } else {
+            map.set(current, true);
+            current = current.next;
+        }
+    }
+    return false;
+};
