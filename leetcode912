@@ -1,0 +1,115 @@
+数组排序（快排不是很熟）
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+// // 冒泡排序
+// var sortArray = function(nums) {
+//     let stop = false;
+//     for (let i = 0; i < nums.length && !stop; i++) {
+//         stop = true;
+//         for (let j = 0; j < nums.length - i - 1; j++) {
+//             if (nums[j + 1] < nums[j]) {
+//                 stop = false;
+//                 [nums[j], nums[j + 1]] = [nums[j + 1], nums[j]];
+//             }
+//         }
+//     }
+//     return nums;
+// };
+// // 插入排序
+// var sortArray = function(nums) {
+//     for (let i = 1; i < nums.length; i++) {
+//         let j = i - 1;
+//         let value = nums[i];
+//         for (; j >= 0; j--) {
+//             if (value < nums[j]) {
+//                 nums[j + 1] = nums[j];
+//             } else {
+//                 break;
+//             }
+//         }
+//         nums[j + 1] = value;
+//     }
+//     return nums;
+// }
+// // 选择排序
+// var sortArray = function(nums) {
+//     for (i = nums.length - 1; i >= 0; i--) {
+//         let big = nums[0];
+//         let bigIndex = 0;
+//         for (let j = 0; j <= i; j++) {
+//             if (nums[j] > big) {
+//                 big = nums[j];
+//                 bigIndex = j;
+//             }
+//         }
+//         [nums[i], nums[bigIndex]] = [nums[bigIndex], nums[i]];
+//     }
+//     return nums;
+// }
+// // 归并排序
+// var sortTwoSortedArray = function(arr1, arr2) {
+//     let l1 = arr1.length;
+//     let l2 = arr2.length;
+//     let i = 0;
+//     let j = 0;
+//     let res = [];
+//     while (i < l1 && j < l2) {
+//         if (arr1[i] <= arr2[j]) {
+//             res.push(arr1[i]);
+//             i++;
+//         } else {
+//             res.push(arr2[j]);
+//             j++;
+//         }
+//     }
+//     while (i < l1) {
+//         res.push(arr1[i]);
+//         i++;
+//     }
+//     while (j < l2) {
+//         res.push(arr2[j]);
+//         j++;
+//     }
+//     return res;
+// }
+// var sortArray = function(nums) {
+//     let length = nums.length;
+//     if (length === 1) return nums;
+//     const mid = Math.floor(length / 2);
+//     const left = nums.slice(0, mid);
+//     const right = nums.slice(mid, length);
+//     return sortTwoSortedArray(sortArray(left), sortArray(right))
+// }
+// 快速排序
+//partition
+function partition(arr, pivot, left, right) {
+  let pivotValue = arr[pivot]
+  let newPivot = left
+  swap(arr, pivot, right)
+  for (let i = left; i < right; i++) {
+    if (arr[i] < pivotValue) {
+      swap(arr, i, newPivot)
+      newPivot ++
+    }
+  }
+  swap(arr, right, newPivot)
+  return newPivot
+}
+//swap
+function swap(arr, i, j) {
+  [arr[i], arr[j]] = [arr[j], arr[i]]
+}
+var quick = (nums, left, right) => {
+    if (left < right) {
+        let pivot = ~~((right + left)>>1);
+        let newPivot = partition(nums, pivot, left, right)
+        quick(nums, left, newPivot - 1)
+        quick(nums, newPivot + 1, right)
+    }
+    return nums;
+}
+var sortArray = function(nums) {
+    return quick(nums, 0, nums.length - 1);
+}
